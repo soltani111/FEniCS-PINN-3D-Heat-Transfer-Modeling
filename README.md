@@ -1,44 +1,59 @@
-# Laser-Induced Fluorescence (LIF) Method for Temperature Measurement
+# 3D Heat Transfer Modeling: FEniCS vs. Physics-Informed Neural Networks (PINNs)
 
-## Test Theory
+## Introduction
 
-The one-color LIF method was used to calculate the temperature in this experiment. The fluorescent property of the particles was utilized by shining laser light on them, stimulating the particles, and measuring the intensity of the emitted light to determine the temperature of the fluid.
+In this study, the 3D heat transfer problem was first solved using FEniCS. The temperature data obtained from the domain was then used as ground truth data for a Physics-Informed Neural Network (PINN). A comparison was made between the PINN and FEniCS data to assess the accuracy of the PINN model.
 
-Fluorescent materials emit light when exposed to laser light at a specific wavelength. This emitted radiation is temperature-dependent and ceases immediately when the external light source is removed. The degree of temperature dependence varies across different fluorescent materials, with most materials showing increased radiation intensity as the temperature decreases.
+## Geometry Model
 
-### Quantum Efficiency
+The 3D geometry of a fin was considered in this problem. The boundary conditions in this setup are:
+- Constant Wall Temperature \(T = 400\, \text{K}\) at \(x = 0\)
+- \(T = 350\, \text{K}\) at \(x = 100\)
+- \(T = 375\, \text{K}\) at \(y = 60\)
+- Constant Heat Flux \(q'' = 250\, \text{W/m}^2\) at \(y = 0\)
+- Convection boundary condition \(h = 40\, \text{W/(m}^2\cdot \text{K)}\), \(T_\infty = 300\, \text{K}\) at other boundaries.
 
-The quantum efficiency $\( Q \)$ can be defined as:
-$\[
-Q = \frac{\text{Emitted Intensity}}{\text{Incident Intensity}}
-\]$
+## FEniCS Solver
 
-In this relationship, several factors such as \( K_{\text{spec}} \), \( K_{\text{opt}} \), \( \epsilon_1 \), \( \epsilon_2 \), \( C \), \( I_0 \), \( b \), and \( z \) represent various coefficients and parameters influencing the intensity of the fluorescent radiation, absorption by the material, and the laser light path.
-
-### Considerations in the Experiment
-
-In the experiment, the concentration of fluorescent particles is uniform throughout the container. Assuming low laser light fluctuations and low concentration, the term \( e^{-c(\epsilon_1 b + \epsilon_2 z)} \) can be approximated as 1.
-
-To calculate the temperature from the light intensity, the ratio of the radiation intensity in the test mode to that in the reference mode is used:
+For two-dimensional, steady-state conditions with no generation and constant thermal conductivity, the governing equation of this model is:
 
 \[
-\frac{I_f}{I_{f_{\text{ref}}}} = e^{\beta \left(\frac{1}{T} - \frac{1}{T_0}\right)}
+\nabla^2 T = 0
 \]
 
-To determine the temperature distribution, the coefficient \( \beta \) is needed, which is obtained using a calibration curve from a separate experiment.
+In the two-dimensional model, equation [1] becomes:
 
-### Test Equipment
+\[
+\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2} = 0
+\]
 
-The test setup includes a laser and a cylindrical lens to create a light sheet in the test container. A camera is placed perpendicular to the laser sheet, focused on the area of interest. Rhodamine B is used as the fluorescent substance, which is dissolved in water to create a solution of specific concentration. A filter is applied to the camera to block the laser light and only allow the emitted fluorescent light to pass through.
+FEniCS is based on the finite element method, a general and efficient mathematical machinery for the numerical solution of PDEs. The starting point for the finite element method is a PDE expressed in variational form. To obtain the variational form of equation [2], first multiply equation [2] by the test function \(v\) and integrate over the boundary (\(\Omega\)):
 
-### Description of the Experiment
+\[
+\int_\Omega \nabla^2 T \, dx = 0 \quad (x \in \Omega)
+\]
 
-1. **Concentration Measurement**: Dissolve Rhodamine B in water and ensure uniform distribution using a magnetic stirrer. The concentration of this solution is measured as a reference.
+Expanding equation [3]:
 
-2. **Injection and Measurement**: Inject a concentrated fluorescent solution into a dilute solution using a syringe, taking images to measure concentration over time.
+\[
+-\int_\Omega \nabla T \cdot \nabla v \, dx + \int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = 0 \quad (x \in \Omega)
+\]
 
-3. **Temperature Measurement**: Stir the solution uniformly, measure its initial temperature (26°C), and take reference images. Heat the solution to 53°C while stirring and take images at this elevated temperature to create a calibration curve. Inject cold fluid into the container and take images to determine the temperature distribution using the calibration curve.
+On the convection boundary condition, the right-hand term of equation [4] becomes:
 
-## Conclusion
+\[
+\int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = -\int_{\partial \Omega} h(T - T_\infty) v \, dx - \int_{\partial \Omega} q'' v \, dx
+\]
 
-Using the LIF method, the temperature distribution within a fluid can be determined accurately by analyzing the emitted light from fluorescent particles. This method is effective for non-intrusive temperature measurements in various experimental setups.
+From equations [4] and [5], the variational form of equation [2] is:
+
+\[
+a(T, v) = L(T, v)
+\]
+
+\[
+a(T, v) = \int_\Omega \nabla T \cdot \nabla v \, dx + \int_{\partial \Omega} hTv \, dx
+\]
+
+\[
+L(T, v) = -\int_{\partial \Omega} q'' v \, dx + \int_{\partial \Omega} h T_\infty v
