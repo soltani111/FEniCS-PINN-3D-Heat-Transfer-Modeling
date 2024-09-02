@@ -19,7 +19,7 @@ For two-dimensional, steady-state conditions with no generation and constant the
 
 $\[
 \nabla^2 T = 0 
-\] \quad \{(Eq [1])}$
+\] \quad \{Eq [1]}$
 
 In the two-dimensional model, equation [1] becomes:
 
