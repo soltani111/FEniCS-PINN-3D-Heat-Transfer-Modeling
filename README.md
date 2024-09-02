@@ -11,21 +11,21 @@ The 3D geometry of a fin was considered in this problem. The boundary conditions
 - \(T = 350\, \${K}$\) at \(x = 100\)
 - \(T = 375\, \${K}$\) at \(y = 60\)
 - Constant Heat Flux \(q'' = 250\, \${W/m}^2$\) at \(y = 0\)
-- Convection boundary condition \(h = 40\, \${W/(m}^2\cdot \{K)}$\), \(T_\infty = 300\, \text{K}\) at other boundaries.
+- Convection boundary condition \(h = 40\, \${W/(m}^2\cdot \{K)}$\), \(T_\infty = 300\, \${K}$\) at other boundaries.
 
 ## FEniCS Solver
 
 For two-dimensional, steady-state conditions with no generation and constant thermal conductivity, the governing equation of this model is:
 
-\[
+$\[
 \nabla^2 T = 0
-\]
+\]$
 
 In the two-dimensional model, equation [1] becomes:
 
-\[
+$\[
 \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2} = 0
-\]
+\]$
 
 FEniCS is based on the finite element method, a general and efficient mathematical machinery for the numerical solution of PDEs. The starting point for the finite element method is a PDE expressed in variational form. To obtain the variational form of equation [2], first multiply equation [2] by the test function \(v\) and integrate over the boundary (\(\Omega\)):
 
