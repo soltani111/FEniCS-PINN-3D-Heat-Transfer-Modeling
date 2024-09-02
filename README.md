@@ -11,7 +11,7 @@ The 3D geometry of a fin was considered in this problem. The boundary conditions
 - \(T = 350 \, \${K}$\) at \(x = 100\)
 - \(T = 375 \, \${K}$\) at \(y = 60\)
 - Constant Heat Flux \(q'' = 250 \, \${W/m}^2$\) at \(y = 0\)
-- Convection boundary condition \(h = 40 \, \${W/(m}^2 \cdot \{K)}$\), \(T_\infty = 300 \, \${K}$\) at other boundaries.
+- Convection boundary condition \(h = 40 \, \${W/(m}^2 \cdot \{K)}$\), \($T_\infty = 300 \$, \${K}$\) at other boundaries.
 
 ## FEniCS Solver
 
