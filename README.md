@@ -29,31 +29,31 @@ $\[
 
 FEniCS is based on the finite element method, a general and efficient mathematical machinery for the numerical solution of PDEs. The starting point for the finite element method is a PDE expressed in variational form. To obtain the variational form of equation [2], first multiply equation [2] by the test function \(v\) and integrate over the boundary (\(\Omega\)):
 
-\[
+$\[
 \int_\Omega \nabla^2 T \, dx = 0 \quad (x \in \Omega)
-\]
+\]$
 
 Expanding equation [3]:
 
-\[
+$\[
 -\int_\Omega \nabla T \cdot \nabla v \, dx + \int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = 0 \quad (x \in \Omega)
-\]
+\]$
 
 On the convection boundary condition, the right-hand term of equation [4] becomes:
 
-\[
+$\[
 \int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = -\int_{\partial \Omega} h(T - T_\infty) v \, dx - \int_{\partial \Omega} q'' v \, dx
-\]
+\]$
 
 From equations [4] and [5], the variational form of equation [2] is:
 
-\[
+$\[
 a(T, v) = L(T, v)
-\]
+\]$
 
-\[
+$\[
 a(T, v) = \int_\Omega \nabla T \cdot \nabla v \, dx + \int_{\partial \Omega} hTv \, dx
-\]
+\]$
 
-\[
-L(T, v) = -\int_{\partial \Omega} q'' v \, dx + \int_{\partial \Omega} h T_\infty v
+$\[
+L(T, v) = -\int_{\partial \Omega} q'' v \, dx + \int_{\partial \Omega} h T_\infty v$
