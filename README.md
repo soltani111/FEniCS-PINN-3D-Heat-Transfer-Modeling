@@ -81,9 +81,9 @@ $$
 B = \frac{B_x + B_y + B_z}{3} \quad \text{(eq [12])}
 $$
 
-For each point, \(B\) is calculated and fed into a multi-layer perceptron (MLP) with \(N\) input neurons (\(N\): number of points in the entire domain), six hidden layers with \(N_{45}\), \(N_{81}\), \(N_{125}\), \(N_{125}\), \(N_{125}\), \(N_{125}\) neurons respectively, and an output layer with one neuron. Equation [2] is used as the loss function of PINN.
+For each point, \(B\) is calculated and fed into a multi-layer perceptron (MLP) with $\(N\)$ input neurons $(\(N\)$: number of points in the entire domain), six hidden layers with $\(N_{45}\), \(N_{81}\), \(N_{125}\), \(N_{125}\), \(N_{125}\), \(N_{125}\)$ neurons respectively, and an output layer with one neuron. Equation [2] is used as the loss function of PINN.
 
-The MLP gets \(x\), \(y\), and \(z\) as input data and obtains temperature (\(T\)) as output. The results of PINN are shown in Figure 3. Comparison of PINN and FEniCS is evaluated with equation [9], shown in Figure 4.
+The MLP gets $\(x\), \(y\)$, and $\(z\)$ as input data and obtains temperature $(\(T\))$ as output. The results of PINN are shown in Figure 3. Comparison of PINN and FEniCS is evaluated with equation [9], shown in Figure 4.
 
 $$
 \text{Error} \% = \frac{T_{\text{FEniCS}} - T_{\text{PINN}}}{T_{\text{FEniCS}}} \times 100 \quad \text{(eq [13])}
