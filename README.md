@@ -7,11 +7,11 @@ In this study, the 3D heat transfer problem was first solved using FEniCS. The t
 ## Geometry Model
 
 The 3D geometry of a fin was considered in this problem. The boundary conditions in this setup are:
-- Constant Wall Temperature \(T = 400\, \$text{K}$\) at \(x = 0\)
-- \(T = 350\, \$text{K}$\) at \(x = 100\)
-- \(T = 375\, \$text{K}$\) at \(y = 60\)
-- Constant Heat Flux \(q'' = 250\, \$text{W/m}^2$\) at \(y = 0\)
-- Convection boundary condition \(h = 40\, \text{W/(m}^2\cdot \text{K)}\), \(T_\infty = 300\, \text{K}\) at other boundaries.
+- Constant Wall Temperature \(T = 400\, \${K}$\) at \(x = 0\)
+- \(T = 350\, \${K}$\) at \(x = 100\)
+- \(T = 375\, \${K}$\) at \(y = 60\)
+- Constant Heat Flux \(q'' = 250\, \${W/m}^2$\) at \(y = 0\)
+- Convection boundary condition \(h = 40\, \${W/(m}^2\cdot \{K)}$\), \(T_\infty = 300\, \text{K}\) at other boundaries.
 
 ## FEniCS Solver
 
