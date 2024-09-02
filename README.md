@@ -89,15 +89,15 @@ $$
 \text{Error} \ = \frac{T_{\text{FEniCS}} - T_{\text{PINN}}}{T_{\text{FEniCS}}} \times 100 \quad \text{(eq [13])}
 $$
 
-![PINN Results 1](assets/img/posts/projects/three_2%20(1).png)
-![PINN Results 2](assets/img/posts/projects/three_2%20(2).png)
-![PINN Results 3](assets/img/posts/projects/three_2%20(3).png)
+![PINN Results 1](Figures/three_(1).png)
+![PINN Results 2](Figures/three_(2).png)
+![PINN Results 3](Figures/three_(3).png)
 
 *Figure 1: Results of PINN.*
 
-![Error Between PINN and FEniCS 1](assets/img/posts/projects/Error.png)
-![Error Between PINN and FEniCS 2](assets/img/posts/projects/Error2.png)
-![Error Between PINN and FEniCS 3](assets/img/posts/projects/Error3.png)
+![Error Between PINN and FEniCS 1](Figures/Error.png)
+![Error Between PINN and FEniCS 2](Figures/Error2.png)
+![Error Between PINN and FEniCS 3](Figures/Error3.png)
 
 *Figure 2: Errors Between PINN and FEniCS.*
 
