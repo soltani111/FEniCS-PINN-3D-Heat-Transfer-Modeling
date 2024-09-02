@@ -1,89 +1,41 @@
-# FEniCS-PINN-3D-Heat-Transfer-Modeling
+# Laser-Induced Fluorescence (LIF) Method for Temperature Measurement
 
-# Comparative Analysis of 3D Heat Transfer Modeling Using FEniCS and Physics-Informed Neural Networks (PINNs)
+## Test Theory
 
-## Introduction
+The one-color LIF method was used to calculate the temperature in this experiment. The fluorescent property of the particles was utilized by shining laser light on them, stimulating the particles, and measuring the intensity of the emitted light to determine the temperature of the fluid.
 
-In this study, first the 3D heat transfer problem is solved with FEniCS. Afterwards, the temperature data on the domain is used as ground truth data for a Physics-Informed Neural Network (PINN). A comparison is made between the PINN and FEniCS data to evaluate the accuracy of the PINN model.
+Fluorescent materials emit light when exposed to laser light at a specific wavelength. This emitted radiation is temperature-dependent and ceases immediately when the external light source is removed. The degree of temperature dependence varies across different fluorescent materials, with most materials showing increased radiation intensity as the temperature decreases.
 
-## Geometry Model
+### Quantum Efficiency
 
-The 3D geometry of a fin is considered in this problem. Boundary conditions in this setup are:
+The quantum efficiency \( Q \) can be defined as:
 
-- Constant wall temperature \(T = 400 \, \text{K}\) at \(x = 0\)
-- \(T = 350 \, \text{K}\) at \(x = 100\)
-- \(T = 375 \, \text{K}\) at \(y = 60\)
-- Constant heat flux \(q'' = 250 \, \text{W/m}^2\) at \(y = 0\)
-- Convection boundary condition \(h = 40 \, \text{W/m}^2\cdot\text{K}\), \(T_\infty = 300 \, \text{K}\) at other boundaries.
+\[ Q = \frac{\text{Emitted Intensity}}{\text{Incident Intensity}} \]
 
-## FEniCS Solver
+In this relationship, several factors such as \( K_{\text{spec}} \), \( K_{\text{opt}} \), \( \epsilon_1 \), \( \epsilon_2 \), \( C \), \( I_0 \), \( b \), and \( z \) represent various coefficients and parameters influencing the intensity of the fluorescent radiation, absorption by the material, and the laser light path.
 
-For two-dimensional steady-state conditions with no generation and constant thermal conductivity, the governing equation of this model is:
+### Considerations in the Experiment
 
-\[
-\nabla^2 T = 0
-\]
+In the experiment, the concentration of fluorescent particles is uniform throughout the container. Assuming low laser light fluctuations and low concentration, the term \( e^{-c(\epsilon_1 b + \epsilon_2 z)} \) can be approximated as 1.
 
-In the two-dimensional model, the equation becomes:
+To calculate the temperature from the light intensity, the ratio of the radiation intensity in the test mode to that in the reference mode is used:
 
-\[
-\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2} = 0
-\]
+\[ \frac{I_f}{I_{f_{\text{ref}}}} = e^{\beta \left(\frac{1}{T} - \frac{1}{T_0}\right)} \]
 
-FEniCS is based on the finite element method, which is a general and efficient mathematical machinery for the numerical solution of PDEs. The starting point for the finite element methods is a PDE expressed in variational form. To obtain the variational form of the equation, first multiply the equation by the test function \(v\) and integrate over the boundary (\(\Omega\)):
+To determine the temperature distribution, the coefficient \( \beta \) is needed, which is obtained using a calibration curve from a separate experiment.
 
-\[
-\int_\Omega \nabla^2 T \, dx = 0 \quad (x \in \Omega)
-\]
+### Test Equipment
 
-Expanding the equation gives:
+The test setup includes a laser and a cylindrical lens to create a light sheet in the test container. A camera is placed perpendicular to the laser sheet, focused on the area of interest. Rhodamine B is used as the fluorescent substance, which is dissolved in water to create a solution of specific concentration. A filter is applied to the camera to block the laser light and only allow the emitted fluorescent light to pass through.
 
-\[
--\int_\Omega \nabla T \cdot \nabla v \, dx + \int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = 0 \quad (x \in \Omega)
-\]
+### Description of the Experiment
 
-On the convection boundary condition, the right-hand term of the equation becomes:
+1. **Concentration Measurement**: Dissolve Rhodamine B in water and ensure uniform distribution using a magnetic stirrer. The concentration of this solution is measured as a reference.
 
-\[
-\int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = -\int_{\partial \Omega} h(T - T_\infty) v \, dx - \int_{\partial \Omega} q'' v \, dx
-\]
+2. **Injection and Measurement**: Inject a concentrated fluorescent solution into a dilute solution using a syringe, taking images to measure concentration over time.
 
-The variational form of the equation is:
+3. **Temperature Measurement**: Stir the solution uniformly, measure its initial temperature (26°C), and take reference images. Heat the solution to 53°C while stirring and take images at this elevated temperature to create a calibration curve. Inject cold fluid into the container and take images to determine the temperature distribution using the calibration curve.
 
-\[
-a(T, v) = L(T, v)
-\]
+## Conclusion
 
-\[
-a(T, v) = \int_\Omega \nabla T \cdot \nabla v \, dx + \int_{\partial \Omega} hTv \, dx
-\]
-
-\[
-L(T, v) = -\int_{\partial \Omega} q'' v \, dx + \int_{\partial \Omega} h T_\infty v \, dx
-\]
-
-## PINN Inverse Problem
-
-PINNs directly embed physical laws within the loss function of neural networks. By minimizing the loss function, this approach allows the output variables to automatically satisfy physical equations. In this study, we consider an inverse problem with FEniCS ground truth data. Implementation of the PINN with these data obtains the temperature distribution over the domain.
-
-In this work, we first apply a function to the input data that takes \(x\), \(y\), and \(z\) of the input point and gives an array representing the distance of each point proportional to the input point. The formulation of this function is:
-
-\[
-B_x = e^{-\left(\frac{x - x_0}{L_0}\right)^2}
-\]
-
-\[
-B_y = e^{-\left(\frac{y - y_0}{L_0}\right)^2}
-\]
-
-\[
-B_z = e^{-\left(\frac{z - z_0}{L_0}\right)^2}
-\]
-
-\[
-B = \frac{B_x + B_y + B_z}{3}
-\]
-
-For each point, \(B\) is calculated and fed into a multi-layer perceptron (MLP) with \(N\) input neurons (\(N\): number of points in the entire domain), six hidden layers with \(N_{45}\), \(N_{81}\), \(N_{125}\), \(N_{125}\), \(N_{125}\), \(N_{125}\) neurons respectively, and an output layer with one neuron. Equation [2] is used as the loss function of PINN.
-
-The MLP gets \(x\),
+Using the LIF method, the temperature distribution within a fluid can be determined accurately by analyzing the emitted light from fluorescent particles. This method is effective for non-intrusive temperature measurements in various experimental setups.
