@@ -18,7 +18,7 @@ The 3D geometry of a fin was considered in this problem. The boundary conditions
 For two-dimensional, steady-state conditions with no generation and constant thermal conductivity, the governing equation of this model is:
 
 $\[
-\nabla^2 T = 0
+\nabla^2 T = 0 \quad \{(eq [1])}
 \]$
 
 In the two-dimensional model, equation [1] becomes:
