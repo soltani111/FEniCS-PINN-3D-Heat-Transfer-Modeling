@@ -10,7 +10,9 @@ Fluorescent materials emit light when exposed to laser light at a specific wavel
 
 The quantum efficiency \( Q \) can be defined as:
 
-\[ Q = \frac{\text{Emitted Intensity}}{\text{Incident Intensity}} \]
+\[
+Q = \frac{\text{Emitted Intensity}}{\text{Incident Intensity}}
+\]
 
 In this relationship, several factors such as \( K_{\text{spec}} \), \( K_{\text{opt}} \), \( \epsilon_1 \), \( \epsilon_2 \), \( C \), \( I_0 \), \( b \), and \( z \) represent various coefficients and parameters influencing the intensity of the fluorescent radiation, absorption by the material, and the laser light path.
 
@@ -20,7 +22,9 @@ In the experiment, the concentration of fluorescent particles is uniform through
 
 To calculate the temperature from the light intensity, the ratio of the radiation intensity in the test mode to that in the reference mode is used:
 
-\[ \frac{I_f}{I_{f_{\text{ref}}}} = e^{\beta \left(\frac{1}{T} - \frac{1}{T_0}\right)} \]
+\[
+\frac{I_f}{I_{f_{\text{ref}}}} = e^{\beta \left(\frac{1}{T} - \frac{1}{T_0}\right)}
+\]
 
 To determine the temperature distribution, the coefficient \( \beta \) is needed, which is obtained using a calibration curve from a separate experiment.
 
