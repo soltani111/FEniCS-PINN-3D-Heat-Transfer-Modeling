@@ -89,9 +89,9 @@ $$
 \text{Error} \ = \frac{T_{\text{FEniCS}} - T_{\text{PINN}}}{T_{\text{FEniCS}}} \times 100 \quad \text{(eq [13])}
 $$
 
-![PINN Results 1](Figures/three_(1).png)
-![PINN Results 2](Figures/three_(2).png)
-![PINN Results 3](Figures/three_(3).png)
+![PINN Results 1](Figures/three_1.png)
+![PINN Results 2](Figures/three_2.png)
+![PINN Results 3](Figures/three_3.png)
 
 *Figure 1: Results of PINN.*
 
