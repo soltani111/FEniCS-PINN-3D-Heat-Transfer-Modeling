@@ -91,17 +91,17 @@ $$
 
 
 <div align="center">
-    <img src="assets/img/posts/projects/three_1.png" alt="PINN Results 1" width="300" height="400">
-    <img src="assets/img/posts/projects/three_2.png" alt="PINN Results 2" width="300" height="400">
-    <img src="assets/img/posts/projects/three_3.png" alt="PINN Results 3" width="300" height="400">
+    <img src="Figures/three_1.png" alt="PINN Results 1" width="300" height="400">
+    <img src="Figures/three_2.png" alt="PINN Results 2" width="300" height="400">
+    <img src="Figures/three_3.png" alt="PINN Results 3" width="300" height="400">
 </div>
 
 *Figure 1: Results of PINN.*
 
 <div align="center">
-    <img src="assets/img/posts/projects/Error.png" alt="Error Between PINN and FEniCS 1" width="300" height="400">
-    <img src="assets/img/posts/projects/Error2.png" alt="Error Between PINN and FEniCS 2" width="300" height="400">
-    <img src="assets/img/posts/projects/Error3.png" alt="Error Between PINN and FEniCS 3" width="300" height="400">
+    <img src="Figures/Error.png" alt="Error Between PINN and FEniCS 1" width="300" height="400">
+    <img src="Figures/Error2.png" alt="Error Between PINN and FEniCS 2" width="300" height="400">
+    <img src="Figures/Error3.png" alt="Error Between PINN and FEniCS 3" width="300" height="400">
 </div>
 
 *Figure 2: Errors Between PINN and FEniCS.*
