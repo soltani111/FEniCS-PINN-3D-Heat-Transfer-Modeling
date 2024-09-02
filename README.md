@@ -94,20 +94,15 @@ $$
     <img src="Figures/three_1.png" alt="PINN Results 1" width="400" height="300">
     <img src="Figures/three_2.png" alt="PINN Results 2" width="400" height="300">
     <img src="Figures/three_3.png" alt="PINN Results 3" width="400" height="300">
+    <p><em>Figure 2: Results of PINN.</em></p>
 </div>
 
-<div align="center">
-    *Figure 1: Results of PINN.*
-</div>
 
 <div align="center">
     <img src="Figures/Error.png" alt="Error Between PINN and FEniCS 1" width="400" height="300">
     <img src="Figures/Error2.png" alt="Error Between PINN and FEniCS 2" width="400" height="300">
     <img src="Figures/Error3.png" alt="Error Between PINN and FEniCS 3" width="400" height="300">
-</div>
-
-<div align="center">
-    *Figure 2: Errors Between PINN and FEniCS.*
+    <p><em>Figure 2: Errors Between PINN and FEniCS.</em></p>
 </div>
 
 The mean absolute error (MAE) in the PINN model is 0.2681%, which indicates the acceptable accuracy of the model.
