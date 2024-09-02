@@ -19,31 +19,31 @@ For two-dimensional, steady-state conditions with no generation and constant the
 
 $\[
 \nabla^2 T = 0 
-\] \quad \{Eq [1]}$
+\] \quad \{[1]}$
 
 In the two-dimensional model, equation [1] becomes:
 
 $\[
 \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2} = 0
-\]$
+\] \quad \{[2]}$
 
 FEniCS is based on the finite element method, a general and efficient mathematical machinery for the numerical solution of PDEs. The starting point for the finite element method is a PDE expressed in variational form. To obtain the variational form of equation [2], first multiply equation [2] by the test function \(v\) and integrate over the boundary (\(\Omega\)):
 
 $\[
 \int_\Omega \nabla^2 T \, dx = 0 \quad (x \in \Omega)
-\]$
+\] \quad \{[3]}$
 
 Expanding equation [3]:
 
 $\[
 -\int_\Omega \nabla T \cdot \nabla v \, dx + \int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = 0 \quad (x \in \Omega)
-\]$
+\] \quad \{[4]}$
 
 On the convection boundary condition, the right-hand term of equation [4] becomes:
 
 $\[
 \int_{\partial \Omega} \frac{\partial T}{\partial n} v \, dx = -\int_{\partial \Omega} h(T - T_\infty) v \, dx - \int_{\partial \Omega} q'' v \, dx
-\]$
+\] \quad \{[5]}$
 
 From equations [4] and [5], the variational form of equation [2] is:
 
