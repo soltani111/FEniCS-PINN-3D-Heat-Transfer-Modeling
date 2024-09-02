@@ -86,7 +86,7 @@ For each point, \(B\) is calculated and fed into a multi-layer perceptron (MLP) 
 The MLP gets $\(x\), \(y\)$, and $\(z\)$ as input data and obtains temperature $(\(T\))$ as output. The results of PINN are shown in Figure 3. Comparison of PINN and FEniCS is evaluated with equation [9], shown in Figure 4.
 
 $$
-\text{Error} \% = \frac{T_{\text{FEniCS}} - T_{\text{PINN}}}{T_{\text{FEniCS}}} \times 100 \quad \text{(eq [13])}
+\text{Error} \$% = \frac{T_{\text{FEniCS}} - T_{\text{PINN}}}{T_{\text{FEniCS}}} \times 100 \quad \text{(eq [13])}$
 $$
 
 ![PINN Results 1](assets/img/posts/projects/three_2%20(1).png)
