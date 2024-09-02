@@ -8,11 +8,12 @@ Fluorescent materials emit light when exposed to laser light at a specific wavel
 
 ### Quantum Efficiency
 
-The quantum efficiency \( Q \) can be defined as:
-
+The quantum efficiency $\( Q \)$ can be defined as:
+$
 \[
 Q = \frac{\text{Emitted Intensity}}{\text{Incident Intensity}}
 \]
+$
 
 In this relationship, several factors such as \( K_{\text{spec}} \), \( K_{\text{opt}} \), \( \epsilon_1 \), \( \epsilon_2 \), \( C \), \( I_0 \), \( b \), and \( z \) represent various coefficients and parameters influencing the intensity of the fluorescent radiation, absorption by the material, and the laser light path.
 
